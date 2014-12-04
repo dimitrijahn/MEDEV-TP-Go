@@ -1,12 +1,4 @@
-
 #include "plateau.h"
-
-include "plateau.h";
-
-Plateau::Plateau() {
-    
-}
-
 
 Pierre::Pierre(int x, int y, char lettre, bool vivant)
 {
@@ -15,3 +7,9 @@ Pierre::Pierre(int x, int y, char lettre, bool vivant)
     this->lettre = lettre;
     this->vivant = vivant;
 }
+
+Plateau::Plateau() {
+    
+}
+
+

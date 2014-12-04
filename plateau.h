@@ -1,18 +1,10 @@
 #ifndef PLATEAU_H
 #define	PLATEAU_H
 
+#include <iostream>
 #include <vector>
 
 using namespace std;
-
-class Plateau {
-public:
-    vector<*Pierre> pierres;
-    
-    Plateau();
-    void afficher();
-    
-};
 
 class Pierre {
 private:
@@ -28,5 +20,15 @@ public:
     char getLettre() { return lettre; };
     bool estVivant() { return vivant; };
 };
+
+class Plateau {
+public:
+    vector<Pierre*> pierres;
+    
+    Plateau();
+    void afficher();
+    
+};
+
 #endif	/* PLATEAU_H */
 
