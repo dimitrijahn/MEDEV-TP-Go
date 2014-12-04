@@ -10,6 +10,7 @@ private:
     Plateau *p;
     char lettre; // B ou N
     bool repetition(int x, int y); // true si repetition
+    bool libre(int x, int y);      // true si la case est libre
     bool jouable(int x, int y);
     void capturer();
     int pierresCapturees();
