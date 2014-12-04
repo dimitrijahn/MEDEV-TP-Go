@@ -1,11 +1,6 @@
-/* 
- * File:   main.cpp
- * Author: eleve
- *
- * Created on 4 décembre 2014, 08:18
- */
-
 #include <iostream>
+
+#include "plateau.h"
 
 using namespace std;
 
