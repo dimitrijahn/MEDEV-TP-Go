@@ -3,10 +3,14 @@
 
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <string>
+#include <ncurses.h>
 
 using namespace std;
 
-class Pierre {
+class Pierre
+{
 private:
     int x;
     int y;
@@ -27,7 +31,6 @@ public:
     
     Plateau();
     void afficher();
-    
 };
 
 #endif	/* PLATEAU_H */
