@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ncurses.h>
 
 #include "plateau.h"
 #include "joueur.h"

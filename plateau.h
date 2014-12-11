@@ -5,7 +5,6 @@
 #include <vector>
 #include <sstream>
 #include <string>
-#include <ncurses.h>
 
 using namespace std;
 
