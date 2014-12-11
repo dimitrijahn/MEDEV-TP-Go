@@ -1,12 +1,7 @@
 #include "plateau.h"
 
 
-void deplacerCurseur(int x, int y)
-{
-    ostringstream os;
-    os << "\033[" << (x+1) << ";" << (y+1) << "H";
-    cout << os.str();
-}
+
 
 Pierre::Pierre(int x, int y, char lettre, bool vivant)
 {
@@ -23,6 +18,22 @@ Plateau::Plateau(int taille)
     curseurY = 0;
 }
 
+void Plateau::deplacerCurseur(int x, int y)
+{
+    ostringstream os;
+    int lignesVidesDebut = 2;
+    os << "\033[" << (x+1+lignesVidesDebut) << ";" << (y+1) << "H";
+    cout << os.str();
+}
+
+void Plateau::deplacerCurseurFin()
+{
+    ostringstream os;
+    int lignesVidesDebut = 2;
+    os << "\033[" << (1+taille+lignesVidesDebut) << ";" << (1) << "H";
+    cout << os.str();
+}
+
 void Plateau::afficher()
 {
     for(int i=0; i < taille; i++)
@@ -34,10 +45,14 @@ void Plateau::afficher()
         cout << endl;
     }
     
-    for(int i=0; i < pierres.size(); i++)
+    /*for(int i=0; i < pierres.size(); i++)
     {
         Pierre pierre = *pierres[i];
         cout << "\033[1;12H";
         cout << pierre.getLettre() << endl;
-    }
+    }*/
+    
+    deplacerCurseur(curseurX, curseurY);
+    cout << "?";
+    deplacerCurseurFin();
 }

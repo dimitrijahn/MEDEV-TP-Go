@@ -28,8 +28,13 @@ public:
 class Plateau {
 public:
     vector<Pierre*> pierres;
+    int taille;
+    int curseurX;
+    int curseurY;
     
-    Plateau();
+    Plateau(int taille);
+    void deplacerCurseur(int x, int y);
+    void deplacerCurseurFin();
     void afficher();
 };
 
