@@ -22,9 +22,10 @@ private:
     
     int pierresCapturees();
     int pierresTuees();
+    int intersectionsLibres();
     
 public:
-    Joueur(char lettre, Plateau *p) { this->lettre = lettre; };
+    Joueur(char lettre, Plateau *p) { this->lettre = lettre; this->p = p; };
     char getLettre() { return lettre; };
     int compterPoints();
     bool jouer(int x, int y);

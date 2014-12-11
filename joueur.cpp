@@ -9,6 +9,7 @@ bool Joueur::repetition(int x, int y)
     return false;
 }
 
+
 bool Joueur::libre(int x, int y)                // true si la case est libre
 {
     for (int i = p->pierres.size()-1; i >= 0; i--)      
@@ -21,15 +22,16 @@ bool Joueur::libre(int x, int y)                // true si la case est libre
             }
             else
             {
-                return false;
+                return true;
             }
         }
     } 
     return true;
 }
 
+
 bool Joueur::jouable(int x, int y)
-{
+{    
     if ( !repetition(x, y) && libre(x, y))
     {
         return true;
@@ -42,8 +44,7 @@ bool Joueur::jouer(int x, int y)
 {
     if (jouable(x, y))
     {
-        Pierre *a = new Pierre (x, y, this->lettre, true);
-        p->pierres.push_back(a);
+        p->pierres.push_back(new Pierre (x, y, this->lettre, true));
         return true;
     }
     return false;
@@ -60,6 +61,8 @@ bool Joueur::contenirDans(Pierre* p,vector<Pierre*>* groupe)//vérifier si le gr
     }
     return false;
 }
+
+
 void Joueur::groupeContenir(Pierre* pierre,vector<Pierre*> *groupe)//trouver le groupe qui contient certain pierre
 {
     groupe->push_back(pierre);
@@ -97,6 +100,8 @@ void Joueur::groupeContenir(Pierre* pierre,vector<Pierre*> *groupe)//trouver le 
         } 
     }
 }
+
+
 //hypothèses par KANG Yabin:
 //1.l'origine du plateau est (0,0),pas (1,1)
 //2.le nombre des pierres est suffisamment grand,donc des pierres capturés n'est pas réutilisables
@@ -154,6 +159,8 @@ bool Joueur::pierreAIntersectionsVides(Pierre* pierre)//vérifier si un pierre a
     if(!gauche*droit*avant*derriere) return true;//au moins un intersection autour du pierre n'est jamais occupé
     if(derriere == 1 || droit == 1 || avant == 1 || gauche == 1)return true;//au moins un intersection autour du pierre qui étais occupé et qui n'est pas occupé
 }
+
+
 bool Joueur::groupeALiberte(vector<Pierre*> *groupe)//vérifier si un groupe a de la liberté
 {
     vector<Pierre*>:: iterator itG;
@@ -165,6 +172,8 @@ bool Joueur::groupeALiberte(vector<Pierre*> *groupe)//vérifier si un groupe a d
     }
     return false;
 }
+
+
 void Joueur::capturer() //capturer les groupes (un pierre seul est un groupe spécial) qui n'ont pas de liberté
 {
     vector<Pierre*>:: iterator it;
@@ -184,7 +193,31 @@ void Joueur::capturer() //capturer les groupes (un pierre seul est un groupe sp�
                 }
             }
         }
+    }  
+}
+
+
+int Joueur::pierresTuees()
+{
+    int pierresMortes=0;
+    for (int i=0; i<p->pierres.size(); i++)
+    {
+        if (p->pierres[i]->estVivant() == false && p->pierres[i]->getLettre() == this->getLettre())
+        {
+            pierresMortes ++;
+        }
     }
+    return pierresMortes;
+}
+
+
+int Joueur::intersectionsLibres()
+{
     
-    
+}
+
+
+int Joueur::compterPoints()
+{
+    return (intersectionsLibres() - pierresTuees());
 }

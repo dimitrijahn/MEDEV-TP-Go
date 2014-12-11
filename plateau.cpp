@@ -45,14 +45,22 @@ void Plateau::afficher()
         cout << endl;
     }
     
-    /*for(int i=0; i < pierres.size(); i++)
+    char charCurseur = '?';
+    for(int i=0; i < pierres.size(); i++)
     {
         Pierre pierre = *pierres[i];
-        cout << "\033[1;12H";
-        cout << pierre.getLettre() << endl;
-    }*/
+        if(pierre.estVivant())
+        {
+            deplacerCurseur(pierre.getX(), pierre.getY());
+            cout << pierre.getLettre() << endl;
+            if(pierre.getX() == curseurX && pierre.getY() == curseurY)
+            {
+                charCurseur = pierre.getLettre() == 'B' ? 'b' : 'n';
+            }
+        }
+    }
     
     deplacerCurseur(curseurX, curseurY);
-    cout << "?";
+    cout << charCurseur;
     deplacerCurseurFin();
 }
