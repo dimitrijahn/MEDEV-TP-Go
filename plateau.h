@@ -22,6 +22,9 @@ public:
     int getY() { return y; };
     char getLettre() { return lettre; };
     bool estVivant() { return vivant; };
+    
+    //ajouté par KANG pour réaliser "capturer"
+    void setVivant(bool v){ this->vivant = v;};
 };
 
 class Plateau {

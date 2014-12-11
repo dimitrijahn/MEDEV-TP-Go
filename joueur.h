@@ -13,7 +13,13 @@ private:
     bool repetition(int x, int y); // true si repetition
     bool libre(int x, int y);      // true si la case est libre
     bool jouable(int x, int y);
+    //créé par KANG Yabin pour réaliser "capturer"
+    bool contenirDans(Pierre* p,vector<Pierre*>* groupe);
+    void groupeContenir(Pierre* p,vector<Pierre*> *groupe);
+    bool pierreAIntersectionsVides(Pierre* pierre);
+    bool groupeALiberte(vector<Pierre*> *groupe);
     void capturer();
+    
     int pierresCapturees();
     int pierresTuees();
     
