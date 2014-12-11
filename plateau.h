@@ -27,7 +27,8 @@ public:
     void setVivant(bool v){ this->vivant = v;};
 };
 
-class Plateau {
+class Plateau
+{
 public:
     vector<Pierre*> pierres;
     int taille;
