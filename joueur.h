@@ -2,6 +2,8 @@
 #define	JOUEUR_H
 
 #include <vector>
+#include <gtest/gtest.h>
+
 #include "plateau.h"
 
 using namespace std;
@@ -23,6 +25,8 @@ private:
     int pierresCapturees();
     int pierresTuees();
     int intersectionsLibres();
+    
+    FRIEND_TEST(TestGuillaume, testRepetition);
     
 public:
     Joueur(char lettre, Plateau *p) { this->lettre = lettre; this->p = p; };

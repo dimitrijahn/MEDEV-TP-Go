@@ -6,7 +6,41 @@ using namespace std;
 
 bool Joueur::repetition(int x, int y)
 {
-    return false;
+    char tableauPlateau [5][5] = {' '}; // On définie un tableau représentant le plateau
+    char tableauPlateau2 [5][5] = {' '};
+    
+    for (int i=0; i < p->pierres.size(); i++)
+    {
+        if (p->pierres[i]->estVivant() == false )
+        { 
+            tableauPlateau[p->pierres[i]->getX()][p->pierres[i]->getY()]= ' ';
+        }
+        else 
+        {
+            tableauPlateau[p->pierres[i]->getX()][p->pierres[i]->getY()]= p->pierres[i]->getLettre();
+        }
+    }
+    tableauPlateau[x][y] = lettre; //on obtient un tableau représentant le plateau après le dernier tour de jeu
+
+
+
+    for (int i=0; i < p->pierres.size(); i++)
+    {
+        if (p->pierres[i]->estVivant() == false)
+        {
+            tableauPlateau2[p->pierres[i]->getX()][p->pierres[i]->getY()] = ' ';
+        }
+        else 
+        {
+            tableauPlateau2[p->pierres[i]->getX()][p->pierres[i]->getY()]= p->pierres[i]->getLettre();
+        }
+
+        if (tableauPlateau2 == tableauPlateau)
+        {
+                return true;
+        }
+
+    }
 }
 
 

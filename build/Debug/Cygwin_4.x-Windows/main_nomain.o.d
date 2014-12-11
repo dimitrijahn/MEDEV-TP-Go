@@ -1,4 +1,4 @@
-build/Debug/Cygwin_4.x-Windows/joueur.o: joueur.cpp joueur.h \
+build/Debug/Cygwin_4.x-Windows/main_nomain.o: main.cpp plateau.h joueur.h \
  ../../gtest-1.7.0/include/gtest/gtest.h \
  ../../gtest-1.7.0/include/gtest/internal/gtest-internal.h \
  ../../gtest-1.7.0/include/gtest/internal/gtest-port.h \
@@ -16,7 +16,9 @@ build/Debug/Cygwin_4.x-Windows/joueur.o: joueur.cpp joueur.h \
  ../../gtest-1.7.0/include/gtest/gtest_prod.h \
  ../../gtest-1.7.0/include/gtest/gtest-test-part.h \
  ../../gtest-1.7.0/include/gtest/gtest-typed-test.h \
- ../../gtest-1.7.0/include/gtest/gtest_pred_impl.h plateau.h
+ ../../gtest-1.7.0/include/gtest/gtest_pred_impl.h
+
+plateau.h:
 
 joueur.h:
 
@@ -55,5 +57,3 @@ joueur.h:
 ../../gtest-1.7.0/include/gtest/gtest-typed-test.h:
 
 ../../gtest-1.7.0/include/gtest/gtest_pred_impl.h:
-
-plateau.h:
