@@ -4,6 +4,23 @@
 
 using namespace std;
 
+
+bool egalMat (char tableauPlateau [5][5], char tableauPlateau2 [5][5])
+{
+    for (int i=0; i<5; i++)
+        {
+            for (int j=0; j<5; j++)
+            {
+                if (tableauPlateau2[i][j] != tableauPlateau[i][j])
+                {
+                    return false;
+                }
+            }
+        }
+    return true;
+}
+
+
 bool Joueur::repetition(int x, int y)
 {
     char tableauPlateau [5][5] = {' '}; // On définie un tableau représentant le plateau
@@ -20,7 +37,7 @@ bool Joueur::repetition(int x, int y)
             tableauPlateau[p->pierres[i]->getX()][p->pierres[i]->getY()]= p->pierres[i]->getLettre();
         }
     }
-    tableauPlateau[x][y] = lettre; //on obtient un tableau représentant le plateau après le dernier tour de jeu
+    tableauPlateau[x][y] = this->lettre; //on obtient un tableau représentant le plateau après le dernier tour de jeu
 
 
 
@@ -34,14 +51,16 @@ bool Joueur::repetition(int x, int y)
         {
             tableauPlateau2[p->pierres[i]->getX()][p->pierres[i]->getY()]= p->pierres[i]->getLettre();
         }
+        
 
-        if (tableauPlateau2 == tableauPlateau)
+        if (egalMat(tableauPlateau, tableauPlateau2))
         {
-                return true;
+            return true;
         }
-
     }
+    return false;
 }
+
 
 /*!
  * @brief Teste si la case est libre
@@ -68,6 +87,7 @@ bool Joueur::libre(int x, int y)
     } 
     return true;
 }
+
 
 /*!
  * @brief Teste si la case est jouable
