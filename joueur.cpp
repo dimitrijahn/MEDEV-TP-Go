@@ -43,14 +43,20 @@ bool Joueur::repetition(int x, int y)
     }
 }
 
-
-bool Joueur::libre(int x, int y)                // true si la case est libre
+/*!
+ * @brief Teste si la case est libre
+ * 
+ * @param x : position en x (0 à taille-1)
+ * @param y : position en y (0 à taille-1)
+ * @return true si la case est libre, false sinon
+ */
+bool Joueur::libre(int x, int y)
 {
     for (int i = p->pierres.size()-1; i >= 0; i--)      
     {
-        if (p->pierres[i]->getX() == x && p->pierres[i]->getY() == y)    // On cherche la derniere pierre à avoir ces coordonees
+        if (p->pierres[i]->getX() == x && p->pierres[i]->getY() == y) // On cherche la derniere pierre à avoir ces coordonees
         {
-            if (p->pierres[i]->estVivant())                         // On regarde si elle est morte : true
+            if (p->pierres[i]->estVivant()) // On regarde si elle est morte : true
             {
                 return false;
             }
@@ -63,7 +69,13 @@ bool Joueur::libre(int x, int y)                // true si la case est libre
     return true;
 }
 
-
+/*!
+ * @brief Teste si la case est jouable
+ * 
+ * @param x : position en x (0 à taille-1)
+ * @param y : position en y (0 à taille-1)
+ * @return true si la case est jouable, false sinon
+ */
 bool Joueur::jouable(int x, int y)
 {    
     if ( !repetition(x, y) && libre(x, y))
@@ -73,7 +85,13 @@ bool Joueur::jouable(int x, int y)
     return false;
 }
 
-
+/*!
+ * @brief Essaye de jouer
+ * 
+ * @param x : position en x (0 à taille-1)
+ * @param y : position en y (0 à taille-1)
+ * @return true si le coup a été joué, false sinon
+ */
 bool Joueur::jouer(int x, int y)
 {
     if (jouable(x, y))
@@ -250,7 +268,11 @@ int Joueur::intersectionsLibres()
     
 }
 
-
+/*!
+ * @brief Compte les points en fin de partie
+ * 
+ * @return le nombre de points du joueur
+ */
 int Joueur::compterPoints()
 {
     return (intersectionsLibres() - pierresTuees());

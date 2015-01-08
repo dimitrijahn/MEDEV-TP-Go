@@ -2,6 +2,7 @@
 
 #include "plateau.h"
 #include "joueur.h"
+
 using namespace std;
 
 int main(int argc, char** argv)
@@ -13,19 +14,31 @@ int main(int argc, char** argv)
     int tour = 0;
     bool passerN = false;
     bool passerB = false;
+    /*
+     * Boucle principale
+     * Continue tant que les deux joueurs n'ont pas passé
+     */
     while(passerN == false || passerB == false)
     {
         tour++;
         
         bool tourEnCours = true;
         char key;
+        /*
+         * Boucle du tour en cours
+         * Continue tant que le joueur ne joue pas un coup valide
+         * 
+         * 1) Vide la console
+         * 2) Affichage l'interface et le plateau
+         * 3) Attends un input utilisateur
+         * 4) Traite l'input utilisateur
+         */
         while(tourEnCours)
         {
-            /*
-             * Affichage graphique
-             */
+            // 1) Vide la console
             cout << "\033[H\033[J";
-        
+            
+            // 2) Affichage l'interface et le plateau
             if(tour % 2 == 1) // Tour Noir
             {
                 passerN = false;
@@ -41,8 +54,10 @@ int main(int argc, char** argv)
             
             p.afficher();
             
+            // 3) Attends un input utilisateur
             cin >> key;
             
+            // 4) Traite l'input utilisateur
             switch(key)
             {
                 /*

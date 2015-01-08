@@ -8,12 +8,19 @@
 
 using namespace std;
 
+/*!
+ * @class Joueur
+ * @brief La classe qui place les pierres
+ * 
+ * La classe qui place les pierres et
+ * effectue toutes les vérifications des règles.
+ */
 class Joueur {
 private:
     Plateau* p;
     char lettre; // B ou N
     bool repetition(int x, int y); // true si repetition
-    bool libre(int x, int y);      // true si la case est libre
+    bool libre(int x, int y); // true si la case est libre
     bool jouable(int x, int y);
     //créé par KANG Yabin pour réaliser "capturer"
     bool contenirDans(Pierre* p,vector<Pierre*>* groupe);

@@ -93,9 +93,15 @@ ${OBJECTDIR}/plateau.o: plateau.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/TestGuillaume.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/TestDimitri.o ${TESTDIR}/TestGuillaume.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
+
+
+${TESTDIR}/TestDimitri.o: TestDimitri.cpp 
+	${MKDIR} -p ${TESTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../../gtest-1.7.0 -I../../gtest-1.7.0/include -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/TestDimitri.o TestDimitri.cpp
 
 
 ${TESTDIR}/TestGuillaume.o: TestGuillaume.cpp 
